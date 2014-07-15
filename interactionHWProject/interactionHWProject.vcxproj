@@ -79,11 +79,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MyAnimationManager.cpp" />
     <ClCompile Include="Common.cpp" />
     <ClCompile Include="DrawScene.cpp" />
     <ClCompile Include="DrawText.cpp" />
+    <ClCompile Include="MyAnimationStack.cpp" />
+    <ClCompile Include="MyCamera.cpp" />
+    <ClCompile Include="MyCharacterRendering.cpp" />
+    <ClCompile Include="MyFunctionHandler.cpp" />
     <ClCompile Include="GetPosition.cpp" />
     <ClCompile Include="GlFunction.cpp" />
+    <ClCompile Include="MyHWConnector.cpp" />
+    <ClCompile Include="MyHWMatchingManager.cpp" />
+    <ClCompile Include="MyJoint.cpp" />
+    <ClCompile Include="MyLight.cpp" />
+    <ClCompile Include="MyMesh.cpp" />
+    <ClCompile Include="MyModuleRendering.cpp" />
+    <ClCompile Include="MySceneManager.cpp" />
+    <ClCompile Include="MySkeleton.cpp" />
+    <ClCompile Include="MySkinning.cpp" />
+    <ClCompile Include="MyTexture.cpp" />
+    <ClCompile Include="MyVector.cpp" />
+    <ClCompile Include="MyVertex.cpp" />
     <ClCompile Include="SceneCache.cpp" />
     <ClCompile Include="SceneContext.cpp" />
     <ClCompile Include="SetCamera.cpp" />
@@ -91,11 +108,28 @@
     <ClCompile Include="TestMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyAnimationManager.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="DrawScene.h" />
     <ClInclude Include="DrawText.h" />
+    <ClInclude Include="MyAnimationStack.h" />
+    <ClInclude Include="MyCamera.h" />
+    <ClInclude Include="MyCharacterRendering.h" />
+    <ClInclude Include="MyFunctionHandler.h" />
     <ClInclude Include="GetPosition.h" />
     <ClInclude Include="GlFunction.h" />
+    <ClInclude Include="MyHWConnector.h" />
+    <ClInclude Include="MyHWMatchingManager.h" />
+    <ClInclude Include="MyJoint.h" />
+    <ClInclude Include="MyLight.h" />
+    <ClInclude Include="MyMesh.h" />
+    <ClInclude Include="MyModuleRendering.h" />
+    <ClInclude Include="MySceneManager.h" />
+    <ClInclude Include="MySkeleton.h" />
+    <ClInclude Include="MySkinning.h" />
+    <ClInclude Include="MyTexture.h" />
+    <ClInclude Include="MyVector.h" />
+    <ClInclude Include="MyVertex.h" />
     <ClInclude Include="SceneCache.h" />
     <ClInclude Include="SceneContext.h" />
     <ClInclude Include="SetCamera.h" />

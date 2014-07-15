@@ -104,7 +104,8 @@ void GlDrawMarker(FbxAMatrix& pGlobalPosition)
 
 	glPopMatrix();
 }
-
+//Sanga Modify
+//Skeleton View Joint 정보 보기 
 void GlDrawLimbNode(FbxAMatrix& pGlobalBasePosition, FbxAMatrix& pGlobalEndPosition)
 {
 	glColor3f(1.0, 1.0, 1.0);
@@ -118,10 +119,9 @@ void GlDrawLimbNode(FbxAMatrix& pGlobalBasePosition, FbxAMatrix& pGlobalEndPosit
 
 	//glutSolidCube(0.2);
 	 glPointSize(10.0);
-glEnable(GL_POINT_SMOOTH);
-
+	glEnable(GL_POINT_SMOOTH);
 	glBegin(GL_POINTS);
-	glBegin(GL_LINES);
+	//glBegin(GL_LINES);
 	glVertex3d(pGlobalBasePosition.GetT()[0],pGlobalBasePosition.GetT()[1],pGlobalBasePosition.GetT()[2]);
 	glVertex3d(pGlobalEndPosition.GetT()[0],pGlobalEndPosition.GetT()[1],pGlobalEndPosition.GetT()[2]);
 
