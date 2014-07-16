@@ -382,8 +382,7 @@ void DisplayCallback()
         // to make sure that the application window is opened and a 
         // status message is displayed before.
         gSceneContext->LoadFile();
-
-        CreateMenus();
+		CreateMenus();
 
         // Call the timer to display the first frame.
         glutTimerFunc((unsigned int)gSceneContext->GetFrameTime().GetMilliSeconds(), TimerCallback, 0);

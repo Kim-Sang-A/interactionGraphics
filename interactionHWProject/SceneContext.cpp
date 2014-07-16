@@ -1,14 +1,3 @@
-/****************************************************************************************
-
-Copyright (C) 2014 Autodesk, Inc.
-All rights reserved.
-
-Use of this software is subject to the terms of the Autodesk license agreement
-provided at the time of installation or download, or which otherwise accompanies
-this software in either electronic or hard copy form.
-
-****************************************************************************************/
-
 #include "SceneContext.h"
 
 #include "SceneCache.h"
@@ -27,7 +16,6 @@ namespace
     const int LEFT_BUTTON = 0;
     const int MIDDLE_BUTTON = 1;
     const int RIGHT_BUTTON = 2;
-
     const int BUTTON_DOWN = 0;
     const int BUTTON_UP = 1;
 
@@ -56,8 +44,7 @@ namespace
     void FillCameraArray(FbxScene* pScene, FbxArray<FbxNode*>& pCameraArray)
     {
         pCameraArray.Clear();
-
-        FillCameraArrayRecursive(pScene->GetRootNode(), pCameraArray);
+		 FillCameraArrayRecursive(pScene->GetRootNode(), pCameraArray);
     }
 
     // Find all poses in this scene.
@@ -494,11 +481,12 @@ bool SceneContext::LoadFile()
             mStatus = MUST_BE_REFRESHED;
 
             // Convert Axis System to what is used in this example, if needed
+			// 시스템 축 변환 
             FbxAxisSystem SceneAxisSystem = mScene->GetGlobalSettings().GetAxisSystem();
             FbxAxisSystem OurAxisSystem(FbxAxisSystem::eYAxis, FbxAxisSystem::eParityOdd, FbxAxisSystem::eRightHanded);
             if( SceneAxisSystem != OurAxisSystem )
             {
-                OurAxisSystem.ConvertScene(mScene);
+                OurAxisSystem.ConvertScene(mScene); //우리 축 시스템에 맞게 변환 작업 ?
             }
 
             // Convert Unit System to what is used in this example, if needed
@@ -510,15 +498,19 @@ bool SceneContext::LoadFile()
             }
 
             // Get the list of all the animation stack.
+			//모든 애니메이션 스택 리스트를 갖고 온다 
             mScene->FillAnimStackNameArray(mAnimStackNameArray);
 
             // Get the list of all the cameras in the scene.
+			// 씬 안에서 모든 카메라 리스트를 갖고 온다
             FillCameraArray(mScene, mCameraArray);
 
             // Convert mesh, NURBS and patch into triangle mesh
+			//NURBS는 Non-uniform rational B-spline를 줄인 말이다. 일정한 점들을 연결한 직선에서
+			//계산에 의해 곡선을 구하고 그 곡선을 확장시킨 3차원의 곡면을 구하는 방식 ..? 
 			FbxGeometryConverter lGeomConverter(mSdkManager);
 			lGeomConverter.Triangulate(mScene, /*replace*/true);
-
+		
 			// Split meshes per material, so that we only have one material per mesh (for VBO support)
 			lGeomConverter.SplitMeshesPerMaterial(mScene, /*replace*/true);
 
@@ -533,7 +525,7 @@ bool SceneContext::LoadFile()
             FillPoseArray(mScene, mPoseArray);
 
             // Initialize the window message.
-    /*        mWindowMessage = "File ";
+    /*     mWindowMessage = "File ";
             mWindowMessage += mFileName;
             mWindowMessage += "\nClick on the right mouse button to enter menu.";
             mWindowMessage += "\nEsc to exit.";
