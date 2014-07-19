@@ -1,24 +1,3 @@
-/****************************************************************************************
-
-   Copyright (C) 2014 Autodesk, Inc.
-   All rights reserved.
-
-   Use of this software is subject to the terms of the Autodesk license agreement
-   provided at the time of installation or download, or which otherwise accompanies
-   this software in either electronic or hard copy form.
- 
-****************************************************************************************/
-
-/////////////////////////////////////////////////////////////////////////
-//
-// This file contains functions to:
-// 1) find the current camera;
-// 2) get the relevant settings of a camera depending on it's projection
-//    type and aperture mode;
-// 3) compute the orientation of a camera.
-//
-/////////////////////////////////////////////////////////////////////////
-
 #include <fbxsdk.h>
 
 #include "GetPosition.h"
@@ -347,6 +326,8 @@ FbxCamera* GetCurrentCamera(FbxScene* pScene,
     FbxGlobalSettings& lGlobalSettings = pScene->GetGlobalSettings();
     FbxGlobalCameraSettings& lGlobalCameraSettings = pScene->GlobalCameraSettings();
     FbxString lCurrentCameraName = lGlobalSettings.GetDefaultCamera();
+
+	
 
     // check if we need to create the Producer cameras!
     if (lGlobalCameraSettings.GetCameraProducerPerspective() == NULL &&
