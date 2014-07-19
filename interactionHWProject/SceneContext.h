@@ -1,19 +1,9 @@
-/****************************************************************************************
-
-Copyright (C) 2014 Autodesk, Inc.
-All rights reserved.
-
-Use of this software is subject to the terms of the Autodesk license agreement
-provided at the time of installation or download, or which otherwise accompanies
-this software in either electronic or hard copy form.
-
-****************************************************************************************/
 
 #ifndef _SCENE_CONTEXT_H
 #define _SCENE_CONTEXT_H
 
 #include "GlFunction.h"
-
+#include "MyModuleRendering.h"
 
 class DrawText;
 
@@ -39,6 +29,9 @@ public:
     const FbxScene * GetScene() const { return mScene; }
     // Load the FBX or COLLADA file into memory.
     bool LoadFile();
+
+
+
 
     // The time period for one frame.
     const FbxTime GetFrameTime() const { return mFrameTime; }

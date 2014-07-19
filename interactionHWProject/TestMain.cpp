@@ -119,8 +119,9 @@ int main(int argc, char** argv)
 	// glut initialisation
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
-    glutInitWindowSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT); 
-    glutInitWindowPosition(100, 100);
+	glutInitWindowSize(1000, 800);
+    //glutInitWindowSize(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT); 
+    glutInitWindowPosition(100,100);
     glutCreateWindow("ViewScene");
 
     // Initialize OpenGL.
@@ -134,13 +135,14 @@ int main(int argc, char** argv)
     glutMotionFunc(MotionCallback);
 
 	FbxString lFilePath("model\\boss_Character_attack.fbx");
-	for( int i = 1, c = argc; i < c; ++i )
-	{
-		if( FbxString(argv[i]) == "-test" ) gAutoQuit = true;
-		else if( lFilePath.IsEmpty() ) lFilePath = argv[i];
-	}
+	//for( int i = 1, c = argc; i < c; ++i )
+	//{
+	//	if( FbxString(argv[i]) == "-test" ) gAutoQuit = true;
+	//	else if( lFilePath.IsEmpty() ) lFilePath = argv[i];
+	//}
 
-	gSceneContext = new SceneContext(!lFilePath.IsEmpty() ? lFilePath.Buffer() : NULL, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT, lSupportVBO);
+	gSceneContext = new SceneContext(!lFilePath.IsEmpty() ? lFilePath.Buffer() : NULL, 1000, 800, lSupportVBO);
+//	gSceneContext = new SceneContext(!lFilePath.IsEmpty() ? lFilePath.Buffer() : NULL, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT, lSupportVBO);
 
 	glutMainLoop();
 
@@ -254,14 +256,14 @@ void CreateMenus()
 
     // Build the main menu.
     glutCreateMenu(MenuSelectionCallback);
-    glutAddSubMenu("Select Camera", lCameraMenu); 
+    //glutAddSubMenu("Select Camera", lCameraMenu); 
     glutAddSubMenu("Select Animation Stack", lAnimStackMenu);
     glutAddSubMenu("Select Shading Mode", lShadingModeMenu);
-    if (lBindPoseCount>0 || lRestPoseCount>0)
-        glutAddSubMenu("Go to Pose", lPoseMenu);
-    glutAddSubMenu( "Zoom Mode", lZoomMenu);
-    glutAddMenuEntry("Play", PLAY_ANIMATION);
-    glutAddMenuEntry("Exit", MENU_EXIT); 
+    //if (lBindPoseCount>0 || lRestPoseCount>0)
+       // glutAddSubMenu("Go to Pose", lPoseMenu);
+    //glutAddSubMenu( "Zoom Mode", lZoomMenu);
+    //glutAddMenuEntry("Play", PLAY_ANIMATION);
+    //glutAddMenuEntry("Exit", MENU_EXIT); 
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
 
