@@ -1,14 +1,3 @@
-/****************************************************************************************
-
-   Copyright (C) 2014 Autodesk, Inc.
-   All rights reserved.
-
-   Use of this software is subject to the terms of the Autodesk license agreement
-   provided at the time of installation or download, or which otherwise accompanies
-   this software in either electronic or hard copy form.
- 
-****************************************************************************************/
-
 /////////////////////////////////////////////////////////////////////////
 //
 // This file contains the functions to get the global 
@@ -21,7 +10,8 @@
 // Get the global position of the node for the current pose.
 // If the specified node is not part of the pose or no pose is specified, get its
 // global position at the current time.
-FbxAMatrix GetGlobalPosition(FbxNode* pNode, const FbxTime& pTime, FbxPose* pPose, FbxAMatrix* pParentGlobalPosition)
+FbxAMatrix GetGlobalPosition(FbxNode* pNode, const FbxTime& pTime,
+		FbxPose* pPose, FbxAMatrix* pParentGlobalPosition)
 {
     FbxAMatrix lGlobalPosition;
     bool        lPositionFound = false;

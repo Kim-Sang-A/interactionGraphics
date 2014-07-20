@@ -98,6 +98,7 @@ VBOMesh::~VBOMesh()
 
 }
 
+//VBO 
 bool VBOMesh::Initialize(const FbxMesh *pMesh)
 {
     if (!pMesh->GetNode())

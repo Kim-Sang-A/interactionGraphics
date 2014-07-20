@@ -12,6 +12,13 @@ class DrawText;
 class SceneContext
 {
 public:
+	//상아 추가 
+	enum RENDER_Mode
+    {
+        MESH_RENDER,
+        SKELETON_RENDER
+    };
+	//상아 추가 
     enum Status
     {
         UNLOADED,               // Unload file or load failure;
@@ -46,7 +53,11 @@ public:
     void OnMouse(int pButton, int pState, int pX, int pY);
     // Call this method when mouse is moved.
     void OnMouseMotion(int pX, int pY);
+
+
+
     // Call this method when timer is finished, for animation display.
+	//애니메이션 Click
     void OnTimerClick() const;
 
     // Methods for creating menus.
@@ -67,6 +78,7 @@ public:
     void SetSelectedNode(FbxNode * pSelectedNode);
     // Set the shading mode, wire-frame or shaded.
     void SetShadingMode(ShadingMode pMode);
+	
 
     // Pause the animation.
     void SetPause(bool pPause) { mPause = pPause; }
@@ -80,7 +92,11 @@ public:
         ZOOM_POSITION
     };
     CameraZoomMode  GetZoomMode()        { return mCameraZoomMode; }
+	RENDER_Mode mRenderMode;
+	RENDER_Mode GetRenderMode() {return mRenderMode;}
+	void SetRenderMode(RENDER_Mode pMode);
     void            SetZoomMode( CameraZoomMode pZoomMode);       
+	
 
 private:
     // Display information about current status in the left-up corner of the window.
@@ -126,7 +142,8 @@ private:
 
     //camera zoom mode
     CameraZoomMode mCameraZoomMode;
-
+	
+	
     int mWindowWidth, mWindowHeight;
     // Utility class for draw text in OpenGL.
     DrawText * mDrawText;

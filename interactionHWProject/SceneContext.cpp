@@ -647,7 +647,8 @@ void SceneContext::OnTimerClick() const
 		// the scene in the next timer callback.
 		mStatus = MUST_BE_REFRESHED;
 
-		mCurrentTime += mFrameTime;
+		//애니메이션 시간 관련 핵심 변수들
+		mCurrentTime += mFrameTime; 
 
 		if (mCurrentTime > mStop)
 		{
@@ -883,6 +884,13 @@ void SceneContext::SetShadingMode(ShadingMode pMode)
 	mShadingMode = pMode;
 	mStatus = MUST_BE_REFRESHED;
 }
+void SceneContext::SetRenderMode(RENDER_Mode pMode)
+{
+//	mShadingMode = pMode;
+	mRenderMode= pMode;
+	mStatus = MUST_BE_REFRESHED;
+}
+
 
 void SceneContext::DisplayWindowMessage()
 {

@@ -332,10 +332,18 @@ void ShadingModeSelectionCallback(int pItem)
 {
     if (pItem == MENU_SHADING_MODE_WIREFRAME)
     {
+	//	SceneContext.RENDER_TYPE=0;
+		// MESH_RENDER,
+        //SKELETON_RENDER
+		gSceneContext->SetRenderMode(SceneContext::SKELETON_RENDER);
         gSceneContext->SetShadingMode(SHADING_MODE_WIREFRAME);
+
+
     }
     else if (pItem == MENU_SHADING_MODE_SHADED)
     {
+		//SceneContext.RENDER_TYPE=1;
+		gSceneContext->SetRenderMode(SceneContext::MESH_RENDER);
         gSceneContext->SetShadingMode(SHADING_MODE_SHADED);
     }
 }

@@ -1,5 +1,5 @@
 
-#include "DrawText.h"
+#include "DrawText.h"git repository exists
 
 namespace
 {
@@ -21,7 +21,7 @@ DrawText::DrawText() : mGlyph(NULL), mTextureName(0), mPointSize(DEFAULT_POINT_S
 }
 
 DrawText::~DrawText()
-{
+	{
     delete [] mGlyph;
 
     glDeleteTextures(1, &mTextureName);

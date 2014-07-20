@@ -1,13 +1,3 @@
-/****************************************************************************************
-
-Copyright (C) 2014 Autodesk, Inc.
-All rights reserved.
-
-Use of this software is subject to the terms of the Autodesk license agreement
-provided at the time of installation or download, or which otherwise accompanies
-this software in either electronic or hard copy form.
-
-****************************************************************************************/
 
 #include "DrawScene.h"
 #include "SceneCache.h"
@@ -114,7 +104,7 @@ void DrawNodeRecursive(FbxNode* pNode, FbxTime& pTime, FbxAnimLayer* pAnimLayer,
 		DrawNodeRecursive(pNode->GetChild(lChildIndex), pTime, pAnimLayer, lGlobalPosition, pPose, pShadingMode);
 	}
 }
-
+#include "SceneContext.h"
 // Draw the node following the content of it's node attribute.
 void DrawNode(FbxNode* pNode, 
 	FbxTime& pTime, 
@@ -136,24 +126,31 @@ void DrawNode(FbxNode* pNode,
 		{
 			DrawSkeleton(pNode, pParentGlobalPosition, pGlobalPosition);
 		}
-		// NURBS and patch have been converted into triangluation meshes.
+		//// NURBS and patch have been converted into triangluation meshes.
 		else if (lNodeAttribute->GetAttributeType() == FbxNodeAttribute::eMesh)
 		{
-			DrawMesh(pNode, pTime, pAnimLayer, pGlobalPosition, pPose, pShadingMode);
+		//	if(SceneContext.mRenderMode==SceneContext::RENDER_Mode.MESH_RENDER){
+				DrawMesh(pNode, pTime, pAnimLayer, pGlobalPosition, pPose, pShadingMode);
+		//	}
+			//else{
+
+
+			//}
+	
 		}
-		else if (lNodeAttribute->GetAttributeType() == FbxNodeAttribute::eCamera)
-		{
-			DrawCamera(pNode, pTime, pAnimLayer, pGlobalPosition);
-		}
-		else if (lNodeAttribute->GetAttributeType() == FbxNodeAttribute::eNull)
-		{
-			DrawNull(pGlobalPosition);
-		}
+		//else if (lNodeAttribute->GetAttributeType() == FbxNodeAttribute::eCamera)
+		//{
+		//	DrawCamera(pNode, pTime, pAnimLayer, pGlobalPosition);
+		//}
+		//else if (lNodeAttribute->GetAttributeType() == FbxNodeAttribute::eNull)
+		//{
+		//	DrawNull(pGlobalPosition);
+		//}
 	}
 	else
 	{
 		// Draw a Null for nodes without attribute.
-		DrawNull(pGlobalPosition);
+		//DrawNull(pGlobalPosition);
 	}
 }
 
@@ -172,7 +169,7 @@ void DrawSkeleton(FbxNode* pNode, FbxAMatrix& pParentGlobalPosition, FbxAMatrix&
 	// Only draw the skeleton if it's a limb node and if 
 	// the parent also has an attribute of type skeleton.
 	 
-      
+
 	if (lSkeleton->GetSkeletonType() == FbxSkeleton::eLimbNode &&
 		pNode->GetParent() &&
 		pNode->GetParent()->GetNodeAttribute() &&
@@ -191,6 +188,16 @@ void DrawSkeleton(FbxNode* pNode, FbxAMatrix& pParentGlobalPosition, FbxAMatrix&
 void DrawMesh(FbxNode* pNode, FbxTime& pTime, FbxAnimLayer* pAnimLayer,
 	FbxAMatrix& pGlobalPosition, FbxPose* pPose, ShadingMode pShadingMode)
 {
+
+	    //SHADING_MODE_WIREFRAME,
+    //SHADING_MODE_SHADED,
+	if(pShadingMode==SHADING_MODE_WIREFRAME)
+	{
+		return ; 
+	}
+	else{
+
+	}
 	FbxMesh* lMesh = pNode->GetMesh();
 	const int lVertexCount = lMesh->GetControlPointsCount();
 	
@@ -242,7 +249,7 @@ void DrawMesh(FbxNode* pNode, FbxTime& pTime, FbxAnimLayer* pAnimLayer,
 			{
 				// Deform the vertex array with the skin deformer.
 				//스키닝 애니메이션 
-			//	ComputeSkinDeformation(pGlobalPosition, lMesh, pTime, lVertexArray, pPose);
+				ComputeSkinDeformation(pGlobalPosition, lMesh, pTime, lVertexArray, pPose);
 			}
 		}
 
